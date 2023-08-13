@@ -1,6 +1,6 @@
 package com.magalhaes.crud.controller;
 
-import com.magalhaes.crud.model.User;
+import com.magalhaes.crud.dao.UserDAO;
 import com.magalhaes.crud.security.AuthService;
 import com.magalhaes.crud.security.AuthenticationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +33,8 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Validated @RequestBody AuthenticationRequest auth) {
-        User user = service.attemptSignUp(auth);
+        UserDAO userDAO = service.attemptSignUp(auth);
 
-        return ResponseEntity.ok("User registered successfully! " + user.getId());
+        return ResponseEntity.ok("User registered successfully! " + userDAO.getId());
     }
 }

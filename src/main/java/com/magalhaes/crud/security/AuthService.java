@@ -1,6 +1,6 @@
 package com.magalhaes.crud.security;
 
-import com.magalhaes.crud.model.User;
+import com.magalhaes.crud.dao.UserDAO;
 import com.magalhaes.crud.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,9 +32,9 @@ public class AuthService {
         return token;
     }
 
-    public User attemptSignUp(AuthenticationRequest request) {
-        User user = new User(request.getUsername(),
+    public UserDAO attemptSignUp(AuthenticationRequest request) {
+        UserDAO userDAO = new UserDAO(request.getUsername(),
                 encoder.encode(request.getPassword()));
-        return repository.save(user);
+        return repository.save(userDAO);
     }
 }

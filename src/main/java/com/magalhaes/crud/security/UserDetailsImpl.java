@@ -1,13 +1,11 @@
 package com.magalhaes.crud.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.magalhaes.crud.model.User;
+import com.magalhaes.crud.dao.UserDAO;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
 
 public class UserDetailsImpl implements UserDetails {
 
@@ -20,11 +18,11 @@ public class UserDetailsImpl implements UserDetails {
         this.password = password;
     }
 
-    public static UserDetailsImpl build(User user) {
+    public static UserDetailsImpl build(UserDAO userDAO) {
 
         return new UserDetailsImpl(
-                user.getUsername(),
-                user.getPassword());
+                userDAO.getUsername(),
+                userDAO.getPassword());
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

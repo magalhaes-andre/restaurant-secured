@@ -52,8 +52,8 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(entryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.mvcMatchers("/auth/**").permitAll()
-                                .anyRequest().authenticated()
+                        //auth.mvcMatchers("/auth/**").permitAll()
+                                auth.anyRequest().permitAll()
                 );
 
         http.authenticationProvider(authenticationProvider());

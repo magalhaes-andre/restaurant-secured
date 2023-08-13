@@ -1,10 +1,6 @@
 package com.magalhaes.crud.controller;
 
-import com.magalhaes.crud.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("users")

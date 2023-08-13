@@ -1,6 +1,6 @@
 package com.magalhaes.crud.security;
 
-import com.magalhaes.crud.model.User;
+import com.magalhaes.crud.dao.UserDAO;
 import com.magalhaes.crud.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,10 +17,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
+        UserDAO userDAO = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
 
-        return UserDetailsImpl.build(user);
+        return UserDetailsImpl.build(userDAO);
     }
 
 }
