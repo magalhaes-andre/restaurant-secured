@@ -12,6 +12,5 @@ import lombok.Setter;
 public class DeliveryRequest {
 
     private String address;
-    private int status;
     private Long orderId;
 }

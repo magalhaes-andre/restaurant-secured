@@ -25,4 +25,8 @@ public class Client {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<Order> orders;
+
+    public Client(String name) {
+        this.name = name;
+    }
 }

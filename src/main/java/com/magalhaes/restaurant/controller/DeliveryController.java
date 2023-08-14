@@ -33,4 +33,10 @@ public class DeliveryController {
     public ResponseEntity<Delivery> update(@PathVariable Long id, DeliveryRequest request) {
         return ResponseEntity.ok(service.update(id, request));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.ok(getAll());
+    }
 }

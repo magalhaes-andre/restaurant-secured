@@ -23,17 +23,23 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Order>> fetchAll() {
+    public ResponseEntity<List<Order>> getAll() {
         return ResponseEntity.ok(service.fetchAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Order> findById(@PathVariable Long id) {
+    public ResponseEntity<Order> getById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Order> update(@PathVariable Long id, @Validated @RequestBody OrderRequest request) {
         return ResponseEntity.ok(service.update(id, request));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.ok(getAll());
     }
 }

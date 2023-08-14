@@ -1,6 +1,7 @@
 package com.magalhaes.restaurant.service;
 
 import com.magalhaes.restaurant.dao.Client;
+import com.magalhaes.restaurant.dto.ClientRequest;
 import com.magalhaes.restaurant.exceptions.ResourceNotFoundException;
 import com.magalhaes.restaurant.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,8 @@ public class ClientService {
     @Autowired
     private ClientRepository repository;
 
-    public Client saveClient(Client client) {
+    public Client saveClient(ClientRequest request) {
+        Client client = new Client(request.getName());
         return repository.save(client);
     }
 
@@ -29,7 +31,13 @@ public class ClientService {
     public Client updateClient(Long id, Client clientUpdate) {
         Client currentClient = findById(id);
         clientUpdate.setId(currentClient.getId());
-        return saveClient(clientUpdate);
+        return repository.save(clientUpdate);
+    }
+
+    public Client updateClient(Long id, ClientRequest clientUpdate) {
+        Client currentClient = findById(id);
+        currentClient.setName(clientUpdate.getName());
+        return repository.save(currentClient);
     }
 
     public void deleteClient(Long id) {
