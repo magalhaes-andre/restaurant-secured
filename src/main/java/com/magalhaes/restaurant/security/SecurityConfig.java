@@ -52,10 +52,9 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(entryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.anyRequest().permitAll()
-//                        auth.mvcMatchers("/auth/**").permitAll()
-//                                .mvcMatchers("/swagger-ui").permitAll()
-//                                .mvcMatchers("/api/").authenticated()
+                        auth.mvcMatchers("/auth/**").permitAll()
+                                .mvcMatchers("/swagger-ui/**").permitAll()
+                                .mvcMatchers("/api/**").authenticated()
                 );
 
         http.authenticationProvider(authenticationProvider());
