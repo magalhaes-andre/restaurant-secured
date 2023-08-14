@@ -1,7 +1,7 @@
 package com.magalhaes.crud.repository;
 
-import com.magalhaes.crud.dao.ClientDAO;
+import com.magalhaes.crud.dao.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ClientRepository extends JpaRepository<ClientDAO, Long> {
+public interface ClientRepository extends JpaRepository<Client, Long> {
 }

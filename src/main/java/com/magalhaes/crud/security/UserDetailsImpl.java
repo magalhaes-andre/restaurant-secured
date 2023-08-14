@@ -1,7 +1,7 @@
 package com.magalhaes.crud.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.magalhaes.crud.dao.UserDAO;
+import com.magalhaes.crud.dao.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -18,11 +18,11 @@ public class UserDetailsImpl implements UserDetails {
         this.password = password;
     }
 
-    public static UserDetailsImpl build(UserDAO userDAO) {
+    public static UserDetailsImpl build(User user) {
 
         return new UserDetailsImpl(
-                userDAO.getUsername(),
-                userDAO.getPassword());
+                user.getUsername(),
+                user.getPassword());
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

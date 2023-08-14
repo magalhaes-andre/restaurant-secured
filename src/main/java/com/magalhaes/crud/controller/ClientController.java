@@ -1,6 +1,6 @@
 package com.magalhaes.crud.controller;
 
-import com.magalhaes.crud.dao.ClientDAO;
+import com.magalhaes.crud.dao.Client;
 import com.magalhaes.crud.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +17,12 @@ public class ClientController {
     private ClientService service;
 
     @PostMapping
-    public ResponseEntity<ClientDAO> postClient(@Validated @RequestBody ClientDAO clientDAO) {
-        return ResponseEntity.ok(service.saveClient(clientDAO));
+    public ResponseEntity<Client> postClient(@Validated @RequestBody Client client) {
+        return ResponseEntity.ok(service.saveClient(client));
     }
 
     @GetMapping
-    public ResponseEntity<List<ClientDAO>> fetchAllClients() {
+    public ResponseEntity<List<Client>> fetchAllClients() {
         return ResponseEntity.ok(service.fetchAllClients());
     }
 }

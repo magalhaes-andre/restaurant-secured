@@ -1,6 +1,6 @@
 package com.magalhaes.crud.controller;
 
-import com.magalhaes.crud.dao.OrderDAO;
+import com.magalhaes.crud.dao.Order;
 import com.magalhaes.crud.dto.OrderDTO;
 import com.magalhaes.crud.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +17,14 @@ public class OrderController {
     @Autowired
     private OrderService service;
     @PostMapping
-    public ResponseEntity<OrderDAO> postOrder(@Validated @RequestBody OrderDTO orderDTO) {
+    public ResponseEntity<Order> postOrder(@Validated @RequestBody OrderDTO orderDTO) {
         //TODO checkUserExistence
         //TODO createDelivery
-        return ResponseEntity.ok(service.saveOrder(orderDTO));
+        return ResponseEntity.ok(service.saveOrder(orderDTO).orElseThrow());
     }
 
     @GetMapping
-    public ResponseEntity<List<OrderDAO>> fetchAllOrders() {
+    public ResponseEntity<List<Order>> fetchAllOrders() {
         return ResponseEntity.ok(service.fetchAllOrders());
     }
 }

@@ -1,13 +1,13 @@
 package com.magalhaes.crud.repository;
 
-import com.magalhaes.crud.dao.UserDAO;
+import com.magalhaes.crud.dao.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserDAO, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
-    Optional<UserDAO> findByUsername(String username);
+    Optional<User> findByUsername(String username);
 }

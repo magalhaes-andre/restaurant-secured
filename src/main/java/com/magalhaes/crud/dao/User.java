@@ -5,7 +5,6 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Data
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "users")
-public class UserDAO {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +22,7 @@ public class UserDAO {
     @NotNull
     private String password;
 
-    public UserDAO(String username, String password) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }

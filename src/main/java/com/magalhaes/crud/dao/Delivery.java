@@ -1,25 +1,23 @@
 package com.magalhaes.crud.dao;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Data
-@Table(name = "clients")
-public class ClientDAO {
+@Table(name = "deliveries")
+public class Delivery {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String address;
+    private int status;
 
-    @OneToMany(mappedBy = "client")
-    private List<OrderDAO> orders;
+    @OneToOne
+    private Order order;
 }
