@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.magalhaes</groupId>
-	<artifactId>crud</artifactId>
+	<artifactId>restaurant-secured</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>crud</name>
-	<description>Spring Boot CRUD for products and users with Firebase integration</description>
+	<description>Spring Boot CRUD restaurant with Firebird integration</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
