@@ -1,4 +1,4 @@
-package com.magalhaes.restaurant.config;
+package com.magalhaes.restaurant.security;
 
 import com.magalhaes.restaurant.security.AuthTokenFilter;
 import com.magalhaes.restaurant.security.AuthenticationEntryPointImpl;
@@ -52,8 +52,10 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(entryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        //auth.mvcMatchers("/auth/**").permitAll()
-                                auth.anyRequest().permitAll()
+                        auth.anyRequest().permitAll()
+//                        auth.mvcMatchers("/auth/**").permitAll()
+//                                .mvcMatchers("/swagger-ui").permitAll()
+//                                .mvcMatchers("/api/").authenticated()
                 );
 
         http.authenticationProvider(authenticationProvider());

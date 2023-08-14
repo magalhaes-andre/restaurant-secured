@@ -15,8 +15,8 @@ import java.util.Date;
 public class TokenHandler {
     private static final Logger logger = LoggerFactory.getLogger(TokenHandler.class);
 
-    String jwtSecret = "thebigsecretkeythatnooneexpectedahhhhsobigohmygodsobigwaswas";
-    Long expirationInMS = new Long(500000);
+    String jwtSecret = "VGhpcyB2ZXJ5IHN0cm9uZyBhbmQgYW1hemluZyBzZWNyZXQuLi4";
+    Long expirationInMS = new Long(60000);
 
     public String generateJwtToken(Authentication auth) {
         UserDetailsImpl userDetails = (UserDetailsImpl) auth.getPrincipal();

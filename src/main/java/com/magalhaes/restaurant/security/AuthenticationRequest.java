@@ -14,5 +14,4 @@ public class AuthenticationRequest {
     private String username;
     @NotNull
     private String password;
-
 }

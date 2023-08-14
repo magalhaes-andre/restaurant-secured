@@ -15,13 +15,11 @@ public class Delivery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String address;
-    private int status;
 
     @OneToOne(mappedBy = "delivery")
     private Order order;
 
     public Delivery(String address, int status) {
         this.address = address;
-        this.status = status;
     }
 }

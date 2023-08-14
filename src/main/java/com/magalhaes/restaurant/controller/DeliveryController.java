@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("deliveries")
+@RequestMapping("api/deliveries")
 public class DeliveryController {
 
     @Autowired
@@ -21,12 +21,16 @@ public class DeliveryController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Delivery>> fetchAll() {
+    public ResponseEntity<List<Delivery>> getAll() {
         return ResponseEntity.ok(service.fetchAll());
     }
 
-    @PutMapping
-    public ResponseEntity<Delivery> update(Long id, DeliveryRequest request) {
+    @GetMapping("/{id}")
+    public ResponseEntity<Delivery> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.findById(id));
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Delivery> update(@PathVariable Long id, DeliveryRequest request) {
         return ResponseEntity.ok(service.update(id, request));
     }
 }

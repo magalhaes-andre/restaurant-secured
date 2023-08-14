@@ -21,7 +21,6 @@ public class DeliveryService {
     public Delivery save(DeliveryRequest request) {
         Delivery delivery = new Delivery();
         delivery.setAddress(request.getAddress());
-        delivery.setStatus(request.getStatus());
         return repository.save(delivery);
     }
 
@@ -35,7 +34,6 @@ public class DeliveryService {
 
     public Delivery update(Long id, DeliveryRequest updateRequest) {
         Delivery currentDelivery = findById(id);
-        currentDelivery.setStatus(updateRequest.getStatus());
         currentDelivery.setAddress(updateRequest.getAddress());
         return repository.save(currentDelivery);
     }
